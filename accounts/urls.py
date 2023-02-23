@@ -7,9 +7,7 @@ from django.contrib.auth.decorators import login_required
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
 
-    path('admin/', admin.site.urls),
+    path('login/', views.login, name='Login'),
 
-    path('accounts/', include('accounts.urls')),
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

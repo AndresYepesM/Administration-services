@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="col-md-7 mx-auto rounded-3">
+                <h3 class="text-center" >Welcome!</h3>
+                <h5 class="text-center" >This is the Administration services programs</h5>
+                <hr>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="{% url 'Login' %}" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
