@@ -28,15 +28,31 @@ def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-
         user = auth.authenticate(email=email, password=password)
         if user:
             auth.login(request, user)
-            messages.success(request, f'Welcome {user.full_name}')
+            messages.success(request, f'Welcome!')
             return redirect('Menu')
         else:
             messages.error(
-                request, 'The user dosent exists, please try again!')
+                request, 'credential seen to be wrong,check the credential and please try again!')
             return redirect('Login')
 
     return render(request, 'accounts/login.html')
+
+
+@login_required(login_url='Login')
+def logout(request):
+    auth.logout(request)
+    messages.success(request, f'Have a nice day :)')
+    return redirect('Login')
+
+
+@login_required(login_url='Login')
+def menu(request):
+    if request.user.is_authenticated:
+
+        return render(request, 'accounts/menu.html')
+    else:
+        messages.error(request, 'Access Denied!')
+        return redirect('Login')
